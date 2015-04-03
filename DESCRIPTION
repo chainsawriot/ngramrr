@@ -1,0 +1,10 @@
+Package: ngramrr
+Title: A Simple and Quick ngram tokenizer
+Version: 0.1.0
+Authors@R: "Chung-hong Chan <chainsawtiney@gmail.com> [aut,cre]"
+Description: A simple ngram tokenizer to be used with the tm package. A replacement of RWeka's NGramTokenizer with no rJava (and the heavyweight RWekajars) dependency.
+Depends: R (>= 3.0.0)
+License: MIT
+LazyData: true
+Imports: tau
+Suggests: tm
