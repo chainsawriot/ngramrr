@@ -1,5 +1,5 @@
-require(tau)
-require(tm)
+#require(tau)
+#require(tm)
 
 taungram <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", ...) {
     r <- textcnt(text, method = 'string', n = n, tolower = tolower, split = split, ...)
