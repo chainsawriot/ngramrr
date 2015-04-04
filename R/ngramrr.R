@@ -1,3 +1,6 @@
+#' @importFrom tau textcnt
+NULL
+
 taungram <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", ...) {
     r <- textcnt(text, method = 'string', n = n, tolower = tolower, split = split, ...)
     return(Reduce(c, sapply(1:length(r), function(x) rep(names(r[x]), r[x]))))
@@ -11,6 +14,34 @@ tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL 
     }
     return(g)
 }
+#' General purpose n-gram tokenizer
+#'
+#' A non-Java based n-gram tokenizer to be used with the tm package. Support both character and word n-gram.
+#' 
+#' @param x input string.
+#' @param char logical, using character n-gram. char = FALSE denotes word n-gram.
+#' @param ngmin integer, minimun order of n-gram, ignore when char = TRUE
+#' @param ngmax integer, maximun order of n-gram
+#' @param rmEOL logical, remove ngrams wih EOL character
+#' @return vector of n-grams
+#' @examples
+#' require(tm)
+#' 
+#' nirvana <- c("hello hello hello how low", "hello hello hello how low",
+#' "hello hello hello how low", "hello hello hello",
+#' "with the lights out", "it's less dangerous", "here we are now", "entertain us",
+#' "i feel stupid", "and contagious", "here we are now", "entertain us",
+#' "a mulatto", "an albino", "a mosquito", "my libido", "yeah", "hey yay")
+#'
+#' ngramrr(nirvana[1], ngmax = 3)
+#' ngramrr(nirvana[1], ngmax = 3, char = TRUE)
+#' nirvanaCor <- Corpus(VectorSource(nirvana))
+#' TermDocumentMatrix(nirvanCor, control = list(tokenize = function(x) ngramrr(x, ngmax =3)))
+#'
+#' # Character ngram
+#' 
+#' TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, char = TRUE, ngmax =3)))
+#' @export
 ngramrr <- function(x, char = FALSE, ngmin = 1, ngmax = 2, rmEOL = TRUE) {
     if (ngmin > ngmax) {
         stop("ngmax must be higher than ngmin")
