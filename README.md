@@ -6,6 +6,8 @@ A fast ngram tokenizer for R so that we don't need to install RWeka just for NGr
 ```{r}
 require(ngramrr)
 require(tm)
+require(magrittr)
+
 nirvana <- c("hello hello hello how low", "hello hello hello how low",
 "hello hello hello how low", "hello hello hello",
 "with the lights out", "it's less dangerous", "here we are now", "entertain us",
@@ -13,6 +15,14 @@ nirvana <- c("hello hello hello how low", "hello hello hello how low",
 "a mulatto", "an albino", "a mosquito", "my libido", "yeah", "hey yay")
 
 ngramrr(nirvana[1], ngmax = 3)
-tdm <- TermDocumentMatrix(Corpus(VectorSource(nirvana)), control = list(tokenize = function(x) ngramrr(x, ngmin = 1, ngmax=2)))
-inspect(tdm)
+
+Corpus(VectorSource(nirvana)) %>%
+TermDocumentMatrix(control = list(tokenize = function(x) ngramrr(x, ngmax =3))) %>%
+inspect
+
+# Character ngram
+
+Corpus(VectorSource(nirvana)) %>%
+TermDocumentMatrix(control = list(tokenize = function(x) ngramrr(x, char = TRUE, ngmax =3))) %>%
+inspect
 ```
