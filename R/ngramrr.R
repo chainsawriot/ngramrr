@@ -35,20 +35,21 @@ tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL 
 #'
 #' ngramrr(nirvana[1], ngmax = 3)
 #' ngramrr(nirvana[1], ngmax = 3, char = TRUE)
-#' nirvanaCor <- Corpus(VectorSource(nirvana))
-#' TermDocumentMatrix(nirvanCor, control = list(tokenize = function(x) ngramrr(x, ngmax =3)))
+#' nirvanacor <- Corpus(VectorSource(nirvana))
+#' TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, ngmax =3)))
 #'
 #' # Character ngram
 #' 
-#' TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, char = TRUE, ngmax =3)))
+#' TermDocumentMatrix(nirvanacor, control = list(tokenize =
+#' function(x) ngramrr(x, char = TRUE, ngmax =3), wordLengths = c(1, Inf)))
 #' @export
 ngramrr <- function(x, char = FALSE, ngmin = 1, ngmax = 2, rmEOL = TRUE) {
     if (ngmin > ngmax) {
         stop("ngmax must be higher than ngmin")
     }
-    y <- paste(x, collapse = " ")
+    y <- paste(x, collapse = " ") # why TDM is so stupid?
     if (char) {
-        return(tauchar(x, n = ngmax, rmEOL = rmEOL))
+        return(tauchar(y, n = ngmax, rmEOL = rmEOL))
     }
     sentencelength <- length(unlist(strsplit(y, split = " ")))
     if (sentencelength > ngmax) {

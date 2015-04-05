@@ -1,7 +1,9 @@
 Package: ngramrr
-Title: A Simple and Quick ngram tokenizer
+Title: A Simple General Purpose ngram tokenizer
 Version: 0.1.0
-Authors@R: "Chung-hong Chan <chainsawtiney@gmail.com> [aut,cre]"
+Date: 2015-04-05
+Author: Chung-hong Chan <chainsawtiney@gmail.com>
+Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
 Description: A simple ngram tokenizer to be used with the tm package. A replacement of RWeka's NGramTokenizer with no rJava (and the heavyweight RWekajars) dependency.
 Depends: R (>= 3.0.0)
 License: MIT
