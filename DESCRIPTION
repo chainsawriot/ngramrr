@@ -1,13 +1,21 @@
 Package: ngramrr
 Title: A Simple General Purpose N-Gram Tokenizer
-Version: 0.1.1
+Version: 0.1.2
 Date: 2015-04-05
 Author: Chung-hong Chan <chainsawtiney@gmail.com>
 Maintainer: Chung-hong Chan <chainsawtiney@gmail.com>
-Description: A simple n-gram (contiguous sequences of n items from a given sequence of text) tokenizer to be used with the 'tm' package with no 'rJava'/'RWeka' dependency.
+Description: A simple n-gram (contiguous sequences of n items from a
+    given sequence of text) tokenizer to be used with the 'tm' package with no
+    'rJava'/'RWeka' dependency.
 URL: https://github.com/chainsawriot/ngramrr
-Depends: R (>= 3.0.0)
+Depends:
+    R (>= 3.0.0)
 License: GPL-2
 LazyData: true
-Imports: tau
-Suggests: tm, testthat, magrittr
+Imports:
+    tau
+Suggests:
+    tm,
+    testthat,
+    magrittr
+RoxygenNote: 5.0.1

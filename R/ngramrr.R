@@ -6,11 +6,14 @@ taungram <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", ...) 
     return(Reduce(c, sapply(1:length(r), function(x) rep(names(r[x]), r[x]))))
 }
 
-tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL = FALSE, ...) {
+tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL = FALSE, ngmin = 1 , ...) {
     r <- textcnt(text, method = 'ngram', n = n, tolower = tolower, split = split, ...)
     g <- unlist(sapply(1:length(r), function(x) rep(names(r[x]), r[x])))
     if (rmEOL) {
         g <- g[grep("_", g, invert = TRUE)]
+    }
+    if (ngmin > 1 & ngmin <= n) {
+        g <- Filter(function(x) nchar(x) >= ngmin, g)
     }
     return(g)
 }
@@ -20,7 +23,7 @@ tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL 
 #' 
 #' @param x input string.
 #' @param char logical, using character n-gram. char = FALSE denotes word n-gram.
-#' @param ngmin integer, minimun order of n-gram, ignore when char = TRUE
+#' @param ngmin integer, minimun order of n-gram
 #' @param ngmax integer, maximun order of n-gram
 #' @param rmEOL logical, remove ngrams wih EOL character
 #' @return vector of n-grams
@@ -45,11 +48,11 @@ tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL 
 #' @export
 ngramrr <- function(x, char = FALSE, ngmin = 1, ngmax = 2, rmEOL = TRUE) {
     if (ngmin > ngmax) {
-        stop("ngmax must be higher than ngmin")
+        stop("ngmax must be higher than or equal to ngmin")
     }
     y <- paste(x, collapse = " ") # why TDM is so stupid?
     if (char) {
-        return(tauchar(y, n = ngmax, rmEOL = rmEOL))
+        return(tauchar(y, n = ngmax, rmEOL = rmEOL, ngmin = ngmin))
     }
     sentencelength <- length(unlist(strsplit(y, split = " ")))
     if (sentencelength > ngmax) {
