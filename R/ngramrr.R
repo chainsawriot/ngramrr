@@ -40,7 +40,7 @@ tauchar <- function(text, n = 1, tolower = FALSE, split = "[[:space:]]+", rmEOL 
 #' ngramrr(nirvana[1], ngmax = 3)
 #' ngramrr(nirvana[1], ngmax = 3, char = TRUE)
 #' nirvanacor <- Corpus(VectorSource(nirvana))
-#' TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, ngmax = 3)))
+#' TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, ngmax =3)))
 #'
 #' # Character ngram
 #' 
