@@ -25,4 +25,9 @@ inspect
 Corpus(VectorSource(nirvana)) %>%
 TermDocumentMatrix(control = list(tokenize = function(x) ngramrr(x, char = TRUE, ngmax =3))) %>%
 inspect
+
+# dtm2 and tdm2 wrappers
+
+dtm2(nirvana, ngmax = 3, removePunctuation = TRUE)
 ```
+
