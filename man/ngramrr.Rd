@@ -35,7 +35,7 @@ nirvana <- c("hello hello hello how low", "hello hello hello how low",
 ngramrr(nirvana[1], ngmax = 3)
 ngramrr(nirvana[1], ngmax = 3, char = TRUE)
 nirvanacor <- Corpus(VectorSource(nirvana))
-TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, ngmax =3)))
+TermDocumentMatrix(nirvanacor, control = list(tokenize = function(x) ngramrr(x, ngmax = 3)))
 
 # Character ngram
 

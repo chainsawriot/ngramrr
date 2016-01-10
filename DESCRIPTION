@@ -13,9 +13,9 @@ Depends:
 License: GPL-2
 LazyData: true
 Imports:
+    tm,
     tau
 Suggests:
-    tm,
     testthat,
     magrittr
 RoxygenNote: 5.0.1
