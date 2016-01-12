@@ -38,6 +38,6 @@ nirvana <- c("hello hello hello how low", "hello hello hello how low",
 dtm2(nirvana, ngmax = 3, removePunctuation = TRUE)
 }
 \seealso{
-\code{ngramrr}, \code{DocumentTermMatrix}, \code{DocumentTermMatrix}
+\code{ngramrr}, \code{\link[tm]{DocumentTermMatrix}}, \code{\link[tm]{TermDocumentMatrix}}
 }
 

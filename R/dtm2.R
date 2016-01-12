@@ -10,7 +10,7 @@
 #' @param rmEOL logical, remove ngrams wih EOL character
 #' @param ... Additional options for \code{DocumentTermMatrix} or \code{DocumentTermMatrix}
 #' @return \code{DocumentTermMatrix} or \code{DocumentTermMatrix}
-#' @seealso \code{ngramrr}, \code{DocumentTermMatrix}, \code{DocumentTermMatrix}
+#' @seealso \code{ngramrr}, \code{\link[tm]{DocumentTermMatrix}}, \code{\link[tm]{TermDocumentMatrix}}
 #' @examples
 #' nirvana <- c("hello hello hello how low", "hello hello hello how low",
 #' "hello hello hello how low", "hello hello hello",
